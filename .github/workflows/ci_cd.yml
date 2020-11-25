@@ -1,4 +1,13 @@
-
+on:
+  pull_request:
+    branches:
+      - dev
+      - prod
+  push:
+    branches:
+      - issue1
+      - dev
+      - prod
 
 jobs:
   build:
@@ -28,9 +37,14 @@ jobs:
 
     # enable Flutter for web
     - run: flutter config --enable-web
+
     # get app dependencies
     - run: flutter pub get
+
     # run app tests
     - run: flutter test
-    # produce a build for the web
-    - run: flutter build web
+
+    # produce a build for web
+    - name: Build for web
+      # if: github.base_ref == 'refs/heads/prod'
+      run: flutter build web
