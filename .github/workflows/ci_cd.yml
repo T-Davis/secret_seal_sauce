@@ -5,7 +5,7 @@ on:
       - prod
   push:
     branches:
-      - issue1
+      - T-Davis/issue1
       - dev
       - prod
 
