@@ -44,16 +44,17 @@ jobs:
     # run echo tests
     - name: Run echo tests
       run:
-        echo ${{ github.base_ref }}
-        echo ${{ github.ref }}
-        echo ${{ github.ref == 'refs/heads/dev' }}
-        echo ${{ github.ref == 'dev' }}
-        echo ${{ github.base_ref == 'refs/heads/dev' }}
+        # echo ${{ github.base_ref }}
+        # echo ${{ github.ref }}
+        # echo ${{ github.ref == 'refs/heads/dev' }}
+        # echo ${{ github.ref == 'dev' }}
+        # echo ${{ github.base_ref == 'refs/heads/dev' }}
+        echo ${{ github.base_ref == 'prod' }}
         echo ${{ github.base_ref == 'dev' }}
 
     # send to Firebase preview channel
     - name: send to Firebase Hosting preview channel
-      if: github.ref == 'refs/heads/dev'
+      if: github.base_ref == 'dev'
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
