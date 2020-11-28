@@ -59,12 +59,12 @@ jobs:
       env:
         FIREBASE_CLI_PREVIEWS: hostingchannels
 
-    if: github.base_ref == 'prod'
-    uses: FirebaseExtended/action-hosting-deploy@v0
-    with:
-      repoToken: '${{ secrets.GITHUB_TOKEN }}'
-      firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECRET_SEAL_SAUCE }}'
-      channelId: live
-      projectId: secret-seal-sauce
-    env:
-      FIREBASE_CLI_PREVIEWS: hostingchannels
+      if: github.base_ref == 'prod'
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECRET_SEAL_SAUCE }}'
+        channelId: live
+        projectId: secret-seal-sauce
+      env:
+        FIREBASE_CLI_PREVIEWS: hostingchannels
