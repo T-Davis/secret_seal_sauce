@@ -39,8 +39,11 @@ jobs:
 
     # produce a build for web
     - name: Build for web
-      run: 
-        flutter build web
+      run: flutter build web
+
+    # run echo tests
+    - name: Run echo tests
+      run:
         echo ${{ github.base_ref }}
         echo ${{ github.ref }}
         echo ${{ github.ref == 'refs/heads/dev' }}
