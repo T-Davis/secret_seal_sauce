@@ -41,9 +41,9 @@ jobs:
     - name: Build for web
       run: flutter build web
 
-    # send to Firebase
-    if: github.base_ref == 'refs/heads/dev'
-    - name: send to Firebase Hosting
+    # send to Firebase preview channel
+    - name: send to Firebase Hosting preview channel
+      if: github.base_ref == 'dev'
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -52,8 +52,10 @@ jobs:
       env:
         FIREBASE_CLI_PREVIEWS: hostingchannels
 
-    if: github.base_ref == 'refs/heads/dev'
-    - uses: FirebaseExtended/action-hosting-deploy@v0
+    # send to Firebase Hosting live channel
+    - name: send to Firebase Hosting live channel
+      if: github.base_ref == 'prod'
+      uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECRET_SEAL_SAUCE }}'
