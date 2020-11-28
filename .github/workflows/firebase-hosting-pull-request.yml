@@ -41,17 +41,6 @@ jobs:
     - name: Build for web
       run: flutter build web
 
-    # run echo tests
-    - name: Run echo tests
-      run:
-        # echo ${{ github.base_ref }}
-        # echo ${{ github.ref }}
-        # echo ${{ github.ref == 'refs/heads/dev' }}
-        # echo ${{ github.ref == 'dev' }}
-        # echo ${{ github.base_ref == 'refs/heads/dev' }}
-        echo ${{ github.base_ref == 'prod' }}
-        echo ${{ github.base_ref == 'dev' }}
-
     # send to Firebase preview channel
     - name: send to Firebase Hosting preview channel
       if: github.base_ref == 'dev'
