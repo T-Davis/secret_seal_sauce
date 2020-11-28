@@ -48,8 +48,8 @@ jobs:
         echo ${{ github.base_ref == 'refs/heads/dev' }}
         echo ${{ github.base_ref == 'dev' }}
 
-    # send to Firebase
-    - name: send to Firebase Hosting
+    # send to Firebase preview channel
+    - name: send to Firebase Hosting preview channel
       if: github.ref == 'refs/heads/dev'
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
@@ -59,6 +59,8 @@ jobs:
       env:
         FIREBASE_CLI_PREVIEWS: hostingchannels
 
+    # send to Firebase Hosting live channel
+    - name: send to Firebase Hosting live channel
       if: github.base_ref == 'prod'
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
