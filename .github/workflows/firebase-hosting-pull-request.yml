@@ -42,7 +42,7 @@ jobs:
       run: flutter build web
 
     # send to Firebase
-    if: '${{github.base_ref == 'dev'}}'
+    if: github.base_ref == 'dev'
     - name: send to Firebase Hosting
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
@@ -52,7 +52,7 @@ jobs:
       env:
         FIREBASE_CLI_PREVIEWS: hostingchannels
 
-    if: '${{github.base_ref == 'prod'}}'
+    if: github.base_ref == 'prod'
     - uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
