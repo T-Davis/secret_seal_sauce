@@ -39,13 +39,14 @@ jobs:
 
     # produce a build for web
     - name: Build for web
-      run: flutter build web
-      run: echo ${{ github.base_ref }}
-      run: echo ${{ github.ref }}
-      run: echo ${{ github.ref == 'refs/heads/dev' }}
-      run: echo ${{ github.ref == 'dev' }}
-      run: echo ${{ github.base_ref == 'refs/heads/dev' }}
-      run: echo ${{ github.base_ref == 'dev' }}
+      run: 
+        flutter build web
+        echo ${{ github.base_ref }}
+        echo ${{ github.ref }}
+        echo ${{ github.ref == 'refs/heads/dev' }}
+        echo ${{ github.ref == 'dev' }}
+        echo ${{ github.base_ref == 'refs/heads/dev' }}
+        echo ${{ github.base_ref == 'dev' }}
 
     # send to Firebase
     - name: send to Firebase Hosting
