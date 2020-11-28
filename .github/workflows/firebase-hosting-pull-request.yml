@@ -40,10 +40,14 @@ jobs:
     # produce a build for web
     - name: Build for web
       run: flutter build web
+      run: echo ${{ github.base_ref }}
+      run: echo ${{ github.ref }}
+      run: echo ${{ github.ref == 'refs/heads/dev' }}
+      run: echo ${{ github.ref == 'dev' }}
+      run: echo ${{ github.base_ref == 'refs/heads/dev' }}
+      run: echo ${{ github.base_ref == 'dev' }}
 
     # send to Firebase
-    # if: github.ref == 'refs/heads/dev'
-    #   run: echo ${{ github.base_ref }}
     - name: send to Firebase Hosting
       if: github.ref == 'refs/heads/dev'
       uses: FirebaseExtended/action-hosting-deploy@v0
@@ -55,11 +59,11 @@ jobs:
         FIREBASE_CLI_PREVIEWS: hostingchannels
 
     if: github.base_ref == 'prod'
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: '${{ secrets.GITHUB_TOKEN }}'
-        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECRET_SEAL_SAUCE }}'
-        channelId: live
-        projectId: secret-seal-sauce
-      env:
-        FIREBASE_CLI_PREVIEWS: hostingchannels
+    uses: FirebaseExtended/action-hosting-deploy@v0
+    with:
+      repoToken: '${{ secrets.GITHUB_TOKEN }}'
+      firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECRET_SEAL_SAUCE }}'
+      channelId: live
+      projectId: secret-seal-sauce
+    env:
+      FIREBASE_CLI_PREVIEWS: hostingchannels
