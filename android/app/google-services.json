@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "695682541753",
+    "firebase_url": "https://secret-seal-sauce.firebaseio.com",
+    "project_id": "secret-seal-sauce",
+    "storage_bucket": "secret-seal-sauce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695682541753:android:70d7d7014c6d339ac75368",
+        "android_client_info": {
+          "package_name": "com.example.secret_seal_sauce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695682541753-8jt6bm9t8ck0osmapo32te0gv98o9rjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQkHVtTz_DUrIhNjv3erxM6Ww0uU2rkwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695682541753-8jt6bm9t8ck0osmapo32te0gv98o9rjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
