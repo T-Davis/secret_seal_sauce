@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:secret_seal_sauce/widgets/home_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(AppWidget());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,30 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: HomePage('Hello, Monk Seals!'),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Secret Seal Sauce'),
-        ),
-        body: Center(
-          child: Text(
-            'Hello, Monk Seals!',
-            style: TextStyle(color: Colors.blue, fontSize: 40.0),
-          ),
-        ));
   }
 }
