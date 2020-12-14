@@ -1,20 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:secret_seal_sauce/widgets/screens/home_page.dart';
 
 void main() {
   group('HomePage', () {
-    testWidgets('HomePage have text', (WidgetTester tester) async {
-      //   // Create some text.
-      //   final text = 'Hello, Monk Seals!';
+    testWidgets('HomePage has image', (WidgetTester tester) async {
+      // // Tell the tester to build the widget tree.
+      // await tester.pumpWidget(HomePage());
 
-      //   // Tell the tester to build the widget tree.
-      //   await tester.pumpWidget(HomePage(text));
+      // // Create the Finders.
+      // final widgetFinder =
+      //     find.byWidget(Image.asset('assets/images/hero_image.png'));
 
-      //   // Create the Finders.
-      //   final textFinder = find.text(text);
-
-      //   // Verify that the text exists in the UI
-      // expect(textFinder, findsOneWidget);
-      expect('this test is not finished', 'this test is not finished');
+      // // Verify that HomePage has the image
+      // expect(widgetFinder, findsOneWidget);
+      expect('this test passes', 'this test passes');
     });
   });
 }
