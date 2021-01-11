@@ -7,41 +7,52 @@ class FindASealPage extends StatelessWidget {
     return Scaffold(
         appBar: const CustomAppBar(),
         body: Column(
-          children: [
-            Container(
-              height: 100,
-              color: Colors.amber,
-              child: Row(
-                children: const [
-                  SizedBox(width: 50),
-                  Text('thing'),
-                  SizedBox(width: 50),
-                  Text('thing2')
-                ],
-              ),
-            ),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: 1,
-                itemBuilder: (context, size) {
-                  return const Card(
-                    child: ListTile(
-                      title: Text('hello'),
-                    ),
-                  );
-                })
+          children: const [
+            FilterControls(),
+            SealsList(),
           ],
-        )
+        ));
+  }
+}
 
-        // Column(
-        //   children: [
-        //     Expanded(
-        //       child: Row(
-        //         children: [],
-        //       ),
-        //     ),
-        //   ],
-        // )
-        );
+class SealsList extends StatelessWidget {
+  const SealsList({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: 1,
+        itemBuilder: (context, size) {
+          return const Card(
+            child: ListTile(
+              title: Text('hello'),
+            ),
+          );
+        });
+  }
+}
+
+class FilterControls extends StatelessWidget {
+  const FilterControls({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      color: Colors.amber,
+      child: Row(
+        children: const [
+          SizedBox(width: 50),
+          Text('thing'),
+          SizedBox(width: 50),
+          Text('thing2')
+        ],
+      ),
+    );
   }
 }
