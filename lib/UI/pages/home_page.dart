@@ -16,9 +16,6 @@ class HomePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.fill,
           ),
-          // BlocBuilder<NavigationBloc, NavigationState>(
-          //   builder: (context, state) => Text(state.navigationPages.toString()),
-          // ),
         ],
       ),
     );

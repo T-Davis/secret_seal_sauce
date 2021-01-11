@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: FlatButton(
         onPressed: () {
           // pagesBloc.add(PagesPush(AppPage(HomePage())));
-          context.read<PagesBloc>().add(PagesPush(AppPage(HomePage())));
+          context.read<PagesBloc>().add(PagesPush(AppPage(const HomePage())));
         },
         child: const Text(
           'Hawaii Seals',
