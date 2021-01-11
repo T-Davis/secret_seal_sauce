@@ -17,7 +17,7 @@ class FindASealPage extends StatelessWidget {
 
 class SealsList extends StatelessWidget {
   const SealsList({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class SealsList extends StatelessWidget {
 
 class FilterControls extends StatelessWidget {
   const FilterControls({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
