@@ -9,16 +9,20 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  cloud_firestore: null
+  equatable:
+  firebase_analytics: null
+  firebase_core: null
+  firebase_storage: null
   flutter:
     sdk: flutter
-  firebase_core:
-  firebase_analytics:
-  cloud_firestore:
-  firebase_storage:
+  flutter_bloc:
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lint:
 
 flutter:
   uses-material-design: true
