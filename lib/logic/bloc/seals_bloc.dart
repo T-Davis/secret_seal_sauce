@@ -17,7 +17,8 @@ class SealsBloc extends Bloc<SealsEvent, SealsState> {
     if (event is SealsRequest) {
       final snapshot =
           await FirebaseFirestore.instance.collection('seals').get();
-      yield SealsReceived(snapshot.docs.toSeals());
+      final seals = snapshot.docs.toSeals();
+      yield SealsReceived(seals);
     }
   }
 }
