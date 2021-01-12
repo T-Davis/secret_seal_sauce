@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/components/custom_app_bar.dart';
+import 'package:secret_seal_sauce/logic/bloc/seals_bloc.dart';
 
 class FindASealPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: const CustomAppBar(),
-        body: Column(
-          children: const [
-            FilterControls(),
-            SealsList(),
-          ],
-        ));
+    return BlocProvider(
+      create: (context) => SealsBloc(),
+      child: BlocBuilder<SealsBloc, SealsState>(
+        builder: (context, state) => Scaffold(
+          appBar: const CustomAppBar(),
+          body: Column(
+            children: const [
+              FilterControls(),
+              SealsList(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -22,13 +30,19 @@ class SealsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sealsBloc = BlocProvider.of<SealsBloc>(context);
+    sealsBloc.add(SealsRequest());
+    final seals = sealsBloc.state.seals;
+    if (seals == null) {
+      return const CircularProgressIndicator();
+    }
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: 1,
-        itemBuilder: (context, size) {
-          return const Card(
+        itemCount: seals.length,
+        itemBuilder: (context, index) {
+          return Card(
             child: ListTile(
-              title: Text('hello'),
+              title: Text(seals[index].age.toString()),
             ),
           );
         });

@@ -13,11 +13,14 @@ class SealsBloc extends Bloc<SealsEvent, SealsState> {
   SealsBloc() : super(const SealsInitial());
 
   @override
-  Stream<SealsState> mapEventToState(SealsEvent event) =>
-      (event is SealsRequest)
-          ? FirebaseFirestore.instance
-              .collection('seals')
-              .snapshots()
-              .map((snapshot) => SealsReceived(snapshot.docs.toSeals()))
-          : Stream.fromIterable([]);
+  Stream<SealsState> mapEventToState(SealsEvent event) async* {
+    if (event is SealsRequest) {
+      final snapshot =
+          await FirebaseFirestore.instance.collection('seals').get();
+      yield SealsReceived(snapshot.docs.toSeals());
+    }
+  }
 }
+
+//     .map((snapshot) => SealsReceived(snapshot.docs.toSeals()))
+// : Stream.fromIterable([]);
