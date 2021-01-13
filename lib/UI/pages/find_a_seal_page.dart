@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/components/custom_app_bar.dart';
@@ -42,13 +43,23 @@ class SealsList extends StatelessWidget {
     if (localSeals == null) {
       return const CircularProgressIndicator();
     }
+
     return ListView.builder(
         shrinkWrap: true,
         itemCount: localSeals.length,
         itemBuilder: (context, index) {
+          final ref = FirebaseStorage.instance.ref(localSeals[index].photoURL);
           return Card(
             child: ListTile(
-              title: Text(localSeals[index].age.toString()),
+              leading: FutureBuilder(
+                  future: ref.getDownloadURL(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Image.network(snapshot.data as String);
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  }),
             ),
           );
         });

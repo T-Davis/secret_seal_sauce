@@ -7,9 +7,11 @@ class Seal extends Equatable {
   final Birthplace birthplace;
   final Sex sex;
   final int age;
+  final String photoURL;
 
-  const Seal(this.id, this.birthplace, this.sex, this.age);
+  const Seal(this.id, this.birthplace, this.sex, this.age, String photoURL)
+      : photoURL = 'seals/resized/${photoURL}_800x800.webp';
 
   @override
-  List<Object> get props => [id, birthplace, sex, age];
+  List<Object> get props => [id, birthplace, sex, age, photoURL];
 }

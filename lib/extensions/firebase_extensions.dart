@@ -11,7 +11,8 @@ extension SealDocs on List<QueryDocumentSnapshot> {
           snapshot.id,
           (snapshot.data()['birthplace'] as String).toBirthplaceEnum(),
           (snapshot.data()['sex'] as String).toSexEnum(),
-          snapshot.data()['age'] as int));
+          snapshot.data()['age'] as int,
+          snapshot.data()['photoPath'] as String));
     }
     return sealsList;
   }
