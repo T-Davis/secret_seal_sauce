@@ -1,0 +1,15 @@
+[
+    {
+        "origin": [
+            "http://localhost:56959",
+            "https://web.app"
+        ],
+        "method": [
+            "GET"
+        ],
+        "responseHeader": [
+            "Content-Type: image/webp"
+        ],
+        "maxAgeSeconds": 3600
+    }
+]
