@@ -9,11 +9,11 @@ environment:
   sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
-  cloud_firestore: any
+  cloud_firestore: 
   equatable: ^2.0.0-nullsafety.1
-  firebase_analytics: any
-  firebase_core: any
-  firebase_storage: any
+  firebase_analytics: 
+  firebase_core: 
+  firebase_storage: 
   flutter:
     sdk: flutter
   flutter_bloc: ^7.0.0-nullsafety.0
