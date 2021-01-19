@@ -2,7 +2,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/components/custom_app_bar.dart';
+import 'package:secret_seal_sauce/UI/pages/seal_profile_page.dart';
+import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/bloc/seals_bloc.dart';
+import 'package:secret_seal_sauce/logic/models/app_page.dart';
 import 'package:secret_seal_sauce/logic/models/seal.dart';
 
 class FindASealPage extends StatelessWidget {
@@ -44,25 +47,14 @@ class SealsList extends StatelessWidget {
       return const CircularProgressIndicator();
     }
 
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: localSeals.length,
-        itemBuilder: (context, index) {
-          final ref = FirebaseStorage.instance.ref(localSeals[index].photoURL);
-          return Card(
-            child: ListTile(
-              leading: FutureBuilder(
-                  future: ref.getDownloadURL(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Image.network(snapshot.data as String);
-                    } else {
-                      return const CircularProgressIndicator();
-                    }
-                  }),
-            ),
-          );
-        });
+    return GridView.count(
+      shrinkWrap: true,
+      crossAxisCount: 4,
+      children: List.generate(
+        localSeals.length,
+        (index) => GridViewTile(localSeals[index]),
+      ),
+    );
   }
 }
 
@@ -83,6 +75,41 @@ class FilterControls extends StatelessWidget {
           SizedBox(width: 50),
           Text('thing2')
         ],
+      ),
+    );
+  }
+}
+
+class GridViewTile extends StatelessWidget {
+  final Seal seal;
+
+  const GridViewTile(this.seal);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        context
+            .read<PagesBloc>()
+            .add(PagesPush(AppPage(SealProfilePage(seal))));
+      },
+      child: Card(
+        child: Column(
+          children: [
+            FutureBuilder(
+                future: FirebaseStorage.instance
+                    .ref(seal.photoURL)
+                    .getDownloadURL(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Image.network(snapshot.data as String);
+                  } else {
+                    return const CircularProgressIndicator();
+                  }
+                }),
+            Text(seal.name),
+          ],
+        ),
       ),
     );
   }
