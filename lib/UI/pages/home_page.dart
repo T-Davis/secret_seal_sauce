@@ -11,10 +11,12 @@ class HomePage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Image.asset(
-            'assets/images/hero_image.png',
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.fill,
+          Center(
+            child: Image.asset(
+              'assets/images/hero_image.png',
+              width: MediaQuery.of(context).size.width * .8,
+              fit: BoxFit.fill,
+            ),
           ),
         ],
       ),
