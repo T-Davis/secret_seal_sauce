@@ -11,7 +11,7 @@ environment:
 dependencies:
   cloud_firestore: 
   equatable: 
-  firebase_analytics: 
+  # firebase_analytics: not ready for NNBD
   firebase_core: 
   firebase_storage: 
   flutter:
