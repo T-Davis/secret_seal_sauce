@@ -10,17 +10,19 @@ environment:
 
 dependencies:
   cloud_firestore: 
-  equatable: ^2.0.0-nullsafety.1
-  firebase_analytics: 
+  equatable: 
+  # firebase_analytics: not ready for NNBD
   firebase_core: 
   firebase_storage: 
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.0.0-nullsafety.0
+  flutter_bloc: 
   
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  integration_test:
     sdk: flutter
   lint:
   test:
