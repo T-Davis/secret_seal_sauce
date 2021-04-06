@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:secret_seal_sauce/UI/constants.dart';
 
 double largeFont = 24;
@@ -32,7 +33,7 @@ class LearnHow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 35,
+                height: 40,
               ),
               Text(
                 'Learn how you can help the endangered Hawaiian Monk Seal',
@@ -41,11 +42,15 @@ class LearnHow extends StatelessWidget {
                     TextStyle(fontStyle: FontStyle.italic, fontSize: largeFont),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 35),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: OutlinedButton(
                   onPressed: () => {},
                   child: Text('Protecting Seals'),
-                  style: OutlinedButton.styleFrom(minimumSize: Size(30, 15)),
+                  style: OutlinedButton.styleFrom(
+                      primary: Colors.white,
+                      minimumSize: Size(170, 32),
+                      backgroundColor: kLightBlue,
+                      alignment: Alignment.center),
                 ),
               ),
             ],
@@ -65,22 +70,53 @@ class InPartnershipWith extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: klightBlue,
+      color: kLightBlue,
       child: Column(
         children: [
-          Text(
-            'In partnership with',
-            style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: largeFont,
-                color: Colors.white),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 25, 0, 15),
+            child: Text(
+              'In partnership with',
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: largeFont,
+                  color: Colors.white),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('NOAA logo'),
-              Text('TMMC logo'),
+              Stack(
+                children: [
+                  Container(
+                    width: 106,
+                    height: 106,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  SvgPicture.asset(
+                    'assets/images/NOAA_logo.svg',
+                    height: 100,
+                    semanticsLabel: 'NOAA Logo',
+                  ),
+                ],
+                alignment: Alignment.center,
+              ),
+              SizedBox(
+                width: 50,
+              ),
+              SvgPicture.asset(
+                'assets/images/TMMC_logo.svg',
+                height: 70,
+                color: Colors.white,
+                semanticsLabel: 'TMMC Logo',
+              ),
             ],
+          ),
+          SizedBox(
+            height: 25,
           )
         ],
       ),
@@ -101,17 +137,28 @@ class LinksAndSignUp extends StatelessWidget {
         children: [
           Row(
             children: [
-              FooterSiteMap(),
-              Container(
-                height: 100,
-                child: VerticalDivider(color: Colors.white),
+              Flexible(child: Container()),
+              Flexible(
+                flex: 8,
+                child: Row(
+                  children: [
+                    FooterSiteMap(),
+                    SizedBox(
+                      height: 65,
+                      width: 50,
+                      child: VerticalDivider(color: Colors.white),
+                    ),
+                    FooterSocialMedia(),
+                    SizedBox(
+                      height: 65,
+                      width: 50,
+                      child: VerticalDivider(color: Colors.white),
+                    ),
+                    FooterSignUp(),
+                  ],
+                ),
               ),
-              FooterSocialMedia(),
-              Container(
-                height: 100,
-                child: VerticalDivider(color: Colors.white),
-              ),
-              FooterSignUp()
+              Flexible(child: Container()),
             ],
           )
         ],
@@ -168,10 +215,10 @@ class FooterSocialMedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text('Social'),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(icon: Icon(Icons.add), onPressed: () => {}),
             IconButton(icon: Icon(Icons.dashboard), onPressed: () => {})
@@ -186,53 +233,38 @@ class FooterSiteMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ButtonWrapper(),
-        TextButton(
-          onPressed: () => {},
-          child: Text(
-            'Learn More',
-            style: TextStyle(fontSize: 8),
-          ),
-        ),
-        TextButton(
-          onPressed: () => {},
-          child: Text(
-            'Ocean Activities',
-            style: TextStyle(fontSize: 8),
-          ),
-        ),
-        TextButton(
-          onPressed: () => {},
-          child: Text(
-            'About',
-            style: TextStyle(fontSize: 8),
-          ),
-        ),
-        TextButton(
-          onPressed: () => {},
-          child: Text(
-            'Find A Seal',
-            style: TextStyle(fontSize: 8),
-          ),
-        ),
+        FooterSiteMapButton(title: 'Home'),
+        FooterSiteMapButton(title: 'Learn More'),
+        FooterSiteMapButton(title: 'Ocean Activities'),
+        FooterSiteMapButton(title: 'About'),
+        FooterSiteMapButton(title: 'Find a Seal'),
       ],
     );
   }
 }
 
-class ButtonWrapper extends StatelessWidget {
-  const ButtonWrapper({
-    Key? key,
-  }) : super(key: key);
+class FooterSiteMapButton extends StatelessWidget {
+  final String title;
+  const FooterSiteMapButton({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () => {},
       child: Text(
-        'Home',
-        style: TextStyle(fontSize: 8),
+        title,
+        style: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w200,
+        ),
+      ),
+      style: TextButton.styleFrom(
+        primary: Colors.white,
+        padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+        minimumSize: Size(50, 25),
+        alignment: Alignment.centerLeft,
       ),
     );
   }
