@@ -8,43 +8,51 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FlexedDivider(),
-        LearnHowYouCanHelp(),
+        LearnHow(),
         InPartnershipWith(),
-        LinksAndSignUp()
+        LinksAndSignUp(),
       ],
     );
   }
 }
 
-class LinksAndSignUp extends StatelessWidget {
-  const LinksAndSignUp({
+class LearnHow extends StatelessWidget {
+  const LearnHow({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: kDarkBlue,
-      child: Column(
-        children: [
-          Row(
+    return Row(
+      children: [
+        Spacer(),
+        Flexible(
+          flex: 2,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FooterNavigation(),
-              Container(
-                height: 100,
-                child: VerticalDivider(color: Colors.white),
+              SizedBox(
+                height: 35,
               ),
-              SocialMediaNavigation(),
-              Container(
-                height: 100,
-                child: VerticalDivider(color: Colors.white),
+              Text(
+                'Learn how you can help the endangered Hawaiian Monk Seal',
+                textAlign: TextAlign.center,
+                style:
+                    TextStyle(fontStyle: FontStyle.italic, fontSize: largeFont),
               ),
-              NewsLetterSignUp()
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 15, 0, 35),
+                child: OutlinedButton(
+                  onPressed: () => {},
+                  child: Text('Protecting Seals'),
+                  style: OutlinedButton.styleFrom(minimumSize: Size(30, 15)),
+                ),
+              ),
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+        Spacer(),
+      ],
     );
   }
 }
@@ -80,78 +88,75 @@ class InPartnershipWith extends StatelessWidget {
   }
 }
 
-class LearnHowYouCanHelp extends StatelessWidget {
-  const LearnHowYouCanHelp({
+class LinksAndSignUp extends StatelessWidget {
+  const LinksAndSignUp({
     Key? key,
   }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kDarkBlue,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              FooterSiteMap(),
+              Container(
+                height: 100,
+                child: VerticalDivider(color: Colors.white),
+              ),
+              FooterSocialMedia(),
+              Container(
+                height: 100,
+                child: VerticalDivider(color: Colors.white),
+              ),
+              FooterSignUp()
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class FooterSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Center(
-          child: Text(
-            'Learn how you can help the endangered Hawaiian Monk Seal',
-            style: TextStyle(fontSize: largeFont),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: OutlinedButton(
-            onPressed: () => {},
-            child: Text('Protecting Seals'),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class FlexedDivider extends StatelessWidget {
-  const FlexedDivider({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Spacer(),
-        Flexible(
-          flex: 8,
-          child: Divider(
-            height: 120,
-          ),
-        ),
-        Spacer(),
-      ],
-    );
-  }
-}
-
-class NewsLetterSignUp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: 150,
-          child: Column(
-            children: [
-              Text('Name'),
-              TextField(),
-              Text('Email'),
-              TextField(),
-            ],
-          ),
-        ),
-        Column(
+        Text('Name'),
+        Row(
           children: [
-            Text('Sign up for updates form the Marine Mammal Center'),
+            SizedBox(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              width: 150,
+            ),
+            Text('Sign up for updates from the Marine Mammal Center'),
+          ],
+        ),
+        Text('Email'),
+        Row(
+          children: [
+            SizedBox(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              width: 150,
+            ),
             OutlinedButton(
               onPressed: () => {},
               child: Text('Sign Up'),
-            )
+            ),
           ],
         )
       ],
@@ -159,7 +164,7 @@ class NewsLetterSignUp extends StatelessWidget {
   }
 }
 
-class SocialMediaNavigation extends StatelessWidget {
+class FooterSocialMedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -177,7 +182,7 @@ class SocialMediaNavigation extends StatelessWidget {
   }
 }
 
-class FooterNavigation extends StatelessWidget {
+class FooterSiteMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
