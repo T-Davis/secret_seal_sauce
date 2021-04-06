@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:secret_seal_sauce/UI/components/custom_app_bar.dart';
+import 'package:secret_seal_sauce/UI/components/header.dart';
 import 'package:secret_seal_sauce/UI/components/footer.dart';
 
 class HomePage extends StatelessWidget {

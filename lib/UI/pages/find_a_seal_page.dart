@@ -1,7 +1,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:secret_seal_sauce/UI/components/custom_app_bar.dart';
+import 'package:secret_seal_sauce/UI/components/header.dart';
 import 'package:secret_seal_sauce/UI/pages/seal_profile_page.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/bloc/seals_bloc.dart';

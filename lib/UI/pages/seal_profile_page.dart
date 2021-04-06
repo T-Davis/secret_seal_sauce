@@ -1,6 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:secret_seal_sauce/UI/components/custom_app_bar.dart';
+import 'package:secret_seal_sauce/UI/components/header.dart';
 import 'package:secret_seal_sauce/logic/models/seal.dart';
 
 Padding tagText(String text) => Padding(
