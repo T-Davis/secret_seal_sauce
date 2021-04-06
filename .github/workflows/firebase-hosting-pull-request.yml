@@ -39,7 +39,7 @@ jobs:
 
     # produce a build for web
     - name: Build for web
-      run: flutter build web --no-sound-null-safety
+      run: flutter build web
 
     # send to Firebase preview channel
     - name: send to Firebase Hosting preview channel
