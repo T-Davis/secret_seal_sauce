@@ -133,56 +133,52 @@ class LinksAndSignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: kDarkBlue,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 35, 0, 35),
-        child: Column(
-          children: [
-            Row(
+      child: Row(
+        children: [
+          Flexible(child: Container()),
+          Flexible(
+            flex: 8,
+            child: Column(
               children: [
-                Flexible(child: Container()),
-                Flexible(
-                  flex: 8,
-                  child: Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          FooterSiteMap(),
-                          SizedBox(
-                            height: 85,
-                            width: 60,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: VerticalDivider(color: Colors.white),
-                            ),
-                          ),
-                          FooterSocialMedia(),
-                          SizedBox(
-                            height: 85,
-                            width: 60,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: VerticalDivider(color: Colors.white),
-                            ),
-                          ),
-                          FooterSignUp(),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Attribution(),
-                      SizedBox(
-                        height: 50,
-                      )
-                    ],
-                  ),
+                SizedBox(
+                  height: 50,
                 ),
-                Flexible(child: Container()),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FooterSiteMap(),
+                    SizedBox(
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
+                    ),
+                    FooterSocialMedia(),
+                    SizedBox(
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
+                    ),
+                    FooterSignUp(),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Attribution(),
+                SizedBox(
+                  height: 75,
+                )
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          Flexible(child: Container()),
+        ],
       ),
     );
   }
