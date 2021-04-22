@@ -27,16 +27,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Row(
                 children: [
                   LogoNavWidget(),
+                  SizedBox(width: 20),
                   NavRailButtons(),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         FindASealButton(),
-                        SizedBox(
-                          width: 20,
-                        ),
+                        SizedBox(width: 20),
                         ReportASightingWidget(),
                       ],
                     ),
@@ -65,8 +63,7 @@ class LogoNavWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      padding: EdgeInsets.all(8),
+    return TextButton(
       onPressed: () {
         context.read<PagesBloc>().add(PagesPush(AppPage(const HomePage())));
       },
@@ -104,28 +101,36 @@ class NavRailButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final pagesBloc = BlocProvider.of<PagesBloc>(context);
     return Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-      FlatButton(
+      TextButton(
         onPressed: () {
           pagesBloc.add(PagesPush(AppPage(HomePage())));
         },
+        style: TextButton.styleFrom(
+            padding: EdgeInsets.all(20), primary: Colors.black),
         child: const Text('Home'),
       ),
-      FlatButton(
+      TextButton(
         onPressed: () {
           pagesBloc.add(PagesPush(AppPage(LearnMorePage())));
         },
+        style: TextButton.styleFrom(
+            padding: EdgeInsets.all(20), primary: Colors.black),
         child: const Text('Learn More'),
       ),
-      FlatButton(
+      TextButton(
         onPressed: () {
           pagesBloc.add(PagesPush(AppPage(OceanActivitiesPage())));
         },
+        style: TextButton.styleFrom(
+            padding: EdgeInsets.all(20), primary: Colors.black),
         child: const Text('Ocean Activities'),
       ),
-      FlatButton(
+      TextButton(
         onPressed: () {
           pagesBloc.add(PagesPush(AppPage(AboutPage())));
         },
+        style: TextButton.styleFrom(
+            padding: EdgeInsets.all(20), primary: Colors.black),
         child: const Text('About'),
       ),
     ]);
@@ -139,12 +144,13 @@ class FindASealButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      color: Colors.blue,
+    return TextButton(
       onPressed: () {
         BlocProvider.of<PagesBloc>(context)
             .add(PagesPush(AppPage(FindASealPage())));
       },
+      style: TextButton.styleFrom(
+          padding: EdgeInsets.all(20), backgroundColor: Colors.blue),
       child: const Text(
         'Find A Seal',
         style: TextStyle(color: Colors.white),
@@ -182,8 +188,7 @@ class ReportASightingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-        padding: EdgeInsets.all(8),
+    return TextButton(
         onPressed: () {},
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
