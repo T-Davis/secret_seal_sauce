@@ -54,7 +54,7 @@ class SealProfilePage extends StatelessWidget {
                             .getDownloadURL(),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
-                            return Image.network(snapshot.data as String);
+                            return Image.network(snapshot.data! as String);
                           } else {
                             return const CircularProgressIndicator();
                           }
@@ -129,7 +129,6 @@ class SealProfilePage extends StatelessWidget {
                     ),
                     divider(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
