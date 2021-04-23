@@ -1,1 +1,1 @@
-const int smallScreenWitdth = 650;
+const int smallScreenWidth = 650;
