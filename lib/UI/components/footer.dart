@@ -7,11 +7,37 @@ double largeFont = 24;
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 650) {
+        return FooterLayoutMobile();
+      } else {
+        return FooterLayoutDesktop();
+      }
+    });
+  }
+}
+
+class FooterLayoutMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         LearnHow(),
         InPartnershipWith(),
-        LinksAndSignUp(),
+        LinksAndSignUpMobile(),
+      ],
+    );
+  }
+}
+
+class FooterLayoutDesktop extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LearnHow(),
+        InPartnershipWith(),
+        LinksAndSignUpDesktop(),
       ],
     );
   }
@@ -124,8 +150,8 @@ class InPartnershipWith extends StatelessWidget {
   }
 }
 
-class LinksAndSignUp extends StatelessWidget {
-  const LinksAndSignUp({
+class LinksAndSignUpDesktop extends StatelessWidget {
+  const LinksAndSignUpDesktop({
     Key? key,
   }) : super(key: key);
 
@@ -164,7 +190,7 @@ class LinksAndSignUp extends StatelessWidget {
                         child: VerticalDivider(color: Colors.white),
                       ),
                     ),
-                    FooterSignUp(),
+                    FooterSignUpDesktop(),
                   ],
                 ),
                 SizedBox(
@@ -184,7 +210,71 @@ class LinksAndSignUp extends StatelessWidget {
   }
 }
 
-class FooterSignUp extends StatelessWidget {
+class LinksAndSignUpMobile extends StatelessWidget {
+  const LinksAndSignUpMobile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kDarkBlue,
+      child: Row(
+        children: [
+          Flexible(child: Container()),
+          Flexible(
+            flex: 8,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FooterSiteMap(),
+                    SizedBox(
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
+                    ),
+                    FooterSocialMedia(),
+                    SizedBox(
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                FooterSignUpMobile(),
+                SizedBox(
+                  height: 50,
+                ),
+                Attribution(),
+                SizedBox(
+                  height: 75,
+                )
+              ],
+            ),
+          ),
+          Flexible(child: Container()),
+        ],
+      ),
+    );
+  }
+}
+
+class FooterSignUpDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -268,6 +358,94 @@ class FooterSignUp extends StatelessWidget {
                   alignment: Alignment.center),
             ),
           ],
+        ),
+      ],
+    );
+  }
+}
+
+class FooterSignUpMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '    Name',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            SizedBox(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              width: 180,
+              height: 27,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              '    Email',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            SizedBox(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              width: 180,
+              height: 27,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        Container(
+          width: 200,
+          child: Text(
+            'Sign up for updates from the Marine Mammal Center',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 13,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        OutlinedButton(
+          onPressed: () => {},
+          child: Text('Sign Up'),
+          style: OutlinedButton.styleFrom(
+              textStyle: TextStyle(fontSize: 11),
+              primary: Colors.white,
+              minimumSize: Size(130, 35),
+              backgroundColor: kLightBlue,
+              alignment: Alignment.center),
         ),
       ],
     );
