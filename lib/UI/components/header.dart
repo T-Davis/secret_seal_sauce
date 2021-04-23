@@ -15,45 +15,43 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 5),
         SizedBox(
-          height: 10,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Flexible(child: Container()),
-            Flexible(
-              flex: 8,
-              child: Row(
-                children: [
-                  LogoNavWidget(),
-                  SizedBox(width: 20),
-                  NavRailButtons(),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        FindASealButton(),
-                        SizedBox(width: 20),
-                        ReportASightingWidget(),
-                      ],
+          height: 60,
+          child: Row(
+            children: [
+              Spacer(),
+              Flexible(
+                flex: 8,
+                child: Row(
+                  children: [
+                    LogoNavWidget(),
+                    SizedBox(width: 20),
+                    NavRailButtons(),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          FindASealButton(),
+                          SizedBox(width: 20),
+                          ReportASightingWidget(),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Flexible(child: Container()),
-          ],
+              Spacer(),
+            ],
+          ),
         ),
-        Divider(
-          color: Colors.blue,
-        ),
+        Divider(color: Colors.blue),
       ],
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(74);
+  Size get preferredSize => const Size.fromHeight(94);
 }
 
 class LogoNavWidget extends StatelessWidget {
@@ -69,6 +67,7 @@ class LogoNavWidget extends StatelessWidget {
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
             'Hawaiian',
@@ -159,28 +158,6 @@ class FindASealButton extends StatelessWidget {
   }
 }
 
-// class ReportASightingWidget extends StatelessWidget {
-//   const ReportASightingWidget({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.end,
-//       children: [
-//         Text('Report a sighting'),
-//         Text(
-//           '(888) 256-9840',
-//           style: TextStyle(
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
 class ReportASightingWidget extends StatelessWidget {
   const ReportASightingWidget({
     Key? key,
@@ -191,7 +168,7 @@ class ReportASightingWidget extends StatelessWidget {
     return TextButton(
         onPressed: () {},
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Report a sighting'),
             Text(
