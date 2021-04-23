@@ -102,7 +102,7 @@ class GridViewTile extends StatelessWidget {
                     .getDownloadURL(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Image.network(snapshot.data as String);
+                    return Image.network(snapshot.data! as String);
                   } else {
                     return const CircularProgressIndicator();
                   }
