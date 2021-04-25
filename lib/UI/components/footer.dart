@@ -6,15 +6,11 @@ double largeFont = 24;
 
 class Footer extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 650) {
-        return FooterLayoutMobile();
-      } else {
-        return FooterLayoutDesktop();
-      }
-    });
-  }
+  Widget build(BuildContext context) => LayoutBuilder(
+        builder: (context, constraints) => (constraints.maxWidth < 650)
+            ? FooterLayoutMobile()
+            : FooterLayoutDesktop(),
+      );
 }
 
 class FooterLayoutMobile extends StatelessWidget {
@@ -306,7 +302,7 @@ class FooterSignUpDesktop extends StatelessWidget {
             SizedBox(
               width: 24,
             ),
-            Container(
+            SizedBox(
               width: 200,
               child: Text(
                 'Sign up for updates from the Marine Mammal Center',
@@ -423,7 +419,7 @@ class FooterSignUpMobile extends StatelessWidget {
         SizedBox(
           height: 25,
         ),
-        Container(
+        SizedBox(
           width: 200,
           child: Text(
             'Sign up for updates from the Marine Mammal Center',
