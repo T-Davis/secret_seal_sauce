@@ -1,5 +1,5 @@
 PODS:
-  - cloud_firestore (1.0.5):
+  - cloud_firestore (1.0.6):
     - Firebase/CoreOnly (~> 7.4.0)
     - Firebase/Firestore (~> 7.4.0)
     - firebase_core
@@ -12,10 +12,10 @@ PODS:
   - Firebase/Storage (7.4.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 7.4.0)
-  - firebase_core (1.0.3):
+  - firebase_core (1.0.4):
     - Firebase/CoreOnly (~> 7.4.0)
     - FlutterMacOS
-  - firebase_storage (8.0.3):
+  - firebase_storage (8.0.4):
     - Firebase/CoreOnly (~> 7.4.0)
     - Firebase/Storage (~> 7.4.0)
     - firebase_core
@@ -24,7 +24,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.10.0):
+  - FirebaseCoreDiagnostics (7.11.0):
     - GoogleDataTransport (~> 8.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
@@ -88,12 +88,12 @@ CHECKOUT OPTIONS:
     :tag: 7.4.0
 
 SPEC CHECKSUMS:
-  cloud_firestore: 88e128b6f9af2fec9f275fcf6de203a5a6b04031
+  cloud_firestore: b1e6d9639d1eeed0e33298de9f59726ea1efadfb
   Firebase: 09fb40287b6dfc8ee65f726fa0b788719d3f2a07
-  firebase_core: ecbc7d00363f405de52fa3c9354ef8ef593a30c8
-  firebase_storage: 21ecd4cfbafb88175c253672359c041b4fb31023
+  firebase_core: ba65e9e4b812ddc1ab7ba76a70831096b6ce52b8
+  firebase_storage: a2990d8eb8098a295160e354879d7351f206134e
   FirebaseCore: 99c06e5a1e8d6952e75cb1f0a6d0b23c0f5ccdcf
-  FirebaseCoreDiagnostics: 5662a3823ffcc0acbaa9a21ba5ed302fac634705
+  FirebaseCoreDiagnostics: 68ad972f99206cef818230f3f3179d52ccfb7f8c
   FirebaseFirestore: 41ec175172c1c0d2a86818b61feda2bfc282e7b4
   FirebaseStorage: e8726dfe21ebe068ccbe8e9c332ea90688eeadae
   FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424

@@ -7,11 +7,37 @@ double largeFont = 24;
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 650) {
+        return FooterLayoutMobile();
+      } else {
+        return FooterLayoutDesktop();
+      }
+    });
+  }
+}
+
+class FooterLayoutMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         LearnHow(),
         InPartnershipWith(),
-        LinksAndSignUp(),
+        LinksAndSignUpMobile(),
+      ],
+    );
+  }
+}
+
+class FooterLayoutDesktop extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LearnHow(),
+        InPartnershipWith(),
+        LinksAndSignUpDesktop(),
       ],
     );
   }
@@ -124,8 +150,8 @@ class InPartnershipWith extends StatelessWidget {
   }
 }
 
-class LinksAndSignUp extends StatelessWidget {
-  const LinksAndSignUp({
+class LinksAndSignUpDesktop extends StatelessWidget {
+  const LinksAndSignUpDesktop({
     Key? key,
   }) : super(key: key);
 
@@ -133,79 +159,294 @@ class LinksAndSignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: kDarkBlue,
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            children: [
-              Flexible(child: Container()),
-              Flexible(
-                flex: 8,
-                child: Row(
+          Flexible(child: Container()),
+          Flexible(
+            flex: 8,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FooterSiteMap(),
                     SizedBox(
-                      height: 65,
-                      width: 50,
-                      child: VerticalDivider(color: Colors.white),
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
                     ),
                     FooterSocialMedia(),
                     SizedBox(
-                      height: 65,
-                      width: 50,
-                      child: VerticalDivider(color: Colors.white),
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
                     ),
-                    FooterSignUp(),
+                    FooterSignUpDesktop(),
                   ],
                 ),
-              ),
-              Flexible(child: Container()),
-            ],
-          )
+                SizedBox(
+                  height: 50,
+                ),
+                Attribution(),
+                SizedBox(
+                  height: 75,
+                )
+              ],
+            ),
+          ),
+          Flexible(child: Container()),
         ],
       ),
     );
   }
 }
 
-class FooterSignUp extends StatelessWidget {
+class LinksAndSignUpMobile extends StatelessWidget {
+  const LinksAndSignUpMobile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kDarkBlue,
+      child: Row(
+        children: [
+          Flexible(child: Container()),
+          Flexible(
+            flex: 8,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FooterSiteMap(),
+                    SizedBox(
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
+                    ),
+                    FooterSocialMedia(),
+                    SizedBox(
+                      height: 85,
+                      width: 60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                FooterSignUpMobile(),
+                SizedBox(
+                  height: 50,
+                ),
+                Attribution(),
+                SizedBox(
+                  height: 75,
+                )
+              ],
+            ),
+          ),
+          Flexible(child: Container()),
+        ],
+      ),
+    );
+  }
+}
+
+class FooterSignUpDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Name'),
+        Text(
+          '    Name',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 10,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+        SizedBox(
+          height: 2,
+        ),
         Row(
           children: [
             SizedBox(
               child: TextFormField(
                 decoration: InputDecoration(
+                  filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(),
                 ),
               ),
-              width: 150,
+              width: 180,
+              height: 27,
             ),
-            Text('Sign up for updates from the Marine Mammal Center'),
+            SizedBox(
+              width: 24,
+            ),
+            Container(
+              width: 200,
+              child: Text(
+                'Sign up for updates from the Marine Mammal Center',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13,
+                ),
+              ),
+            ),
           ],
         ),
-        Text('Email'),
+        SizedBox(
+          height: 18,
+        ),
+        Text(
+          '    Email',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 10,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+        SizedBox(
+          height: 2,
+        ),
         Row(
           children: [
             SizedBox(
               child: TextFormField(
                 decoration: InputDecoration(
+                  filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(),
                 ),
               ),
-              width: 150,
+              width: 180,
+              height: 27,
+            ),
+            SizedBox(
+              width: 24,
             ),
             OutlinedButton(
               onPressed: () => {},
               child: Text('Sign Up'),
+              style: OutlinedButton.styleFrom(
+                  textStyle: TextStyle(fontSize: 11),
+                  primary: Colors.white,
+                  minimumSize: Size(130, 35),
+                  backgroundColor: kLightBlue,
+                  alignment: Alignment.center),
             ),
           ],
-        )
+        ),
+      ],
+    );
+  }
+}
+
+class FooterSignUpMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '    Name',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            SizedBox(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              width: 180,
+              height: 27,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              '    Email',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            SizedBox(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              width: 180,
+              height: 27,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        Container(
+          width: 200,
+          child: Text(
+            'Sign up for updates from the Marine Mammal Center',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 13,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        OutlinedButton(
+          onPressed: () => {},
+          child: Text('Sign Up'),
+          style: OutlinedButton.styleFrom(
+              textStyle: TextStyle(fontSize: 11),
+              primary: Colors.white,
+              minimumSize: Size(130, 35),
+              backgroundColor: kLightBlue,
+              alignment: Alignment.center),
+        ),
       ],
     );
   }
@@ -216,12 +457,31 @@ class FooterSocialMedia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Social'),
+        Text(
+          'Social',
+          style: TextStyle(color: Colors.white, fontSize: 12),
+        ),
+        SizedBox(
+          height: 15,
+        ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(icon: Icon(Icons.add), onPressed: () => {}),
-            IconButton(icon: Icon(Icons.dashboard), onPressed: () => {})
+            SvgPicture.asset(
+              'assets/images/Facebook_logo.svg',
+              height: 22,
+              semanticsLabel: 'Facebook Logo',
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            SvgPicture.asset(
+              'assets/images/Instagram_logo.svg',
+              height: 22,
+              semanticsLabel: 'Instagram Logo',
+              color: Colors.white,
+            ),
           ],
         )
       ],
@@ -256,7 +516,7 @@ class FooterSiteMapButton extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 11,
+          fontSize: 12,
           fontWeight: FontWeight.w200,
         ),
       ),
@@ -269,3 +529,43 @@ class FooterSiteMapButton extends StatelessWidget {
     );
   }
 }
+
+class Attribution extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(child: Container()),
+        Flexible(
+          flex: 10,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/place_holder.png',
+                height: 70,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Text(
+                  attributionText,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w100,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Flexible(child: Container()),
+      ],
+    );
+  }
+}
+
+const attributionText =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit';
