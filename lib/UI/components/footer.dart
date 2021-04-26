@@ -302,7 +302,7 @@ class FooterSignUpDesktop extends StatelessWidget {
             SizedBox(
               width: 24,
             ),
-            SizedBox(
+            Container(
               width: 200,
               child: Text(
                 'Sign up for updates from the Marine Mammal Center',
@@ -419,7 +419,7 @@ class FooterSignUpMobile extends StatelessWidget {
         SizedBox(
           height: 25,
         ),
-        SizedBox(
+        Container(
           width: 200,
           child: Text(
             'Sign up for updates from the Marine Mammal Center',
