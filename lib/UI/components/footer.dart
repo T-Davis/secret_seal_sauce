@@ -29,6 +29,19 @@ class FooterLayoutMobile extends StatelessWidget {
 class FooterLayoutDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 650) {
+        return FooterLayoutMobile();
+      } else {
+        return FooterLayoutDesktop();
+      }
+    });
+  }
+}
+
+class FooterLayoutMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         LearnHow(),
