@@ -6,15 +6,11 @@ double largeFont = 24;
 
 class Footer extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 650) {
-        return FooterLayoutMobile();
-      } else {
-        return FooterLayoutDesktop();
-      }
-    });
-  }
+  Widget build(BuildContext context) => LayoutBuilder(
+        builder: (context, constraints) => (constraints.maxWidth < 650)
+            ? FooterLayoutMobile()
+            : FooterLayoutDesktop(),
+      );
 }
 
 class FooterLayoutMobile extends StatelessWidget {
