@@ -20,7 +20,6 @@ class SearchPage extends StatelessWidget {
             child: Column(
               children: [
                 Header(),
-                const FilterControls(),
                 BlocBuilder<SealsBloc, SealsState>(builder: (context, state) {
                   final sealsBloc = BlocProvider.of<SealsBloc>(context);
                   sealsBloc.add(SealsRequest());
@@ -57,28 +56,6 @@ class SealsList extends StatelessWidget {
       children: List.generate(
         localSeals.length,
         (index) => GridViewTile(localSeals[index]),
-      ),
-    );
-  }
-}
-
-class FilterControls extends StatelessWidget {
-  const FilterControls({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      color: Colors.amber,
-      child: Row(
-        children: const [
-          SizedBox(width: 50),
-          Text('thing'),
-          SizedBox(width: 50),
-          Text('thing2')
-        ],
       ),
     );
   }
