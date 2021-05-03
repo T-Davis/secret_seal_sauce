@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/pages/about_page.dart';
-import 'package:secret_seal_sauce/UI/pages/find_a_seal_page.dart';
+import 'package:secret_seal_sauce/UI/pages/directory_page.dart';
 import 'package:secret_seal_sauce/UI/pages/home_page.dart';
 import 'package:secret_seal_sauce/UI/pages/learn_more_page.dart';
 import 'package:secret_seal_sauce/UI/pages/ocean_activities_page.dart';
@@ -160,7 +160,7 @@ class FindASealButton extends StatelessWidget {
     return TextButton(
       onPressed: () {
         BlocProvider.of<PagesBloc>(context)
-            .add(PagesPush(AppPage(FindASealPage())));
+            .add(PagesPush(AppPage(DirectoryPage())));
       },
       style: TextButton.styleFrom(
           padding: EdgeInsets.all(20), backgroundColor: Colors.blue),
