@@ -8,7 +8,7 @@ import 'package:secret_seal_sauce/logic/bloc/seals_bloc.dart';
 import 'package:secret_seal_sauce/logic/models/app_page.dart';
 import 'package:secret_seal_sauce/logic/models/seal.dart';
 
-class FindASealPage extends StatelessWidget {
+class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
