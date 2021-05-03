@@ -1,6 +1,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:secret_seal_sauce/UI/components/footer.dart';
 import 'package:secret_seal_sauce/UI/components/header.dart';
 import 'package:secret_seal_sauce/UI/pages/seal_profile_page.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
@@ -15,16 +16,19 @@ class SearchPage extends StatelessWidget {
       create: (context) => SealsBloc(),
       child: BlocBuilder<SealsBloc, SealsState>(
         builder: (context, state) => Scaffold(
-          appBar: const Header(),
-          body: Column(
-            children: [
-              const FilterControls(),
-              BlocBuilder<SealsBloc, SealsState>(builder: (context, state) {
-                final sealsBloc = BlocProvider.of<SealsBloc>(context);
-                sealsBloc.add(SealsRequest());
-                return SealsList(state.seals);
-              }),
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Header(),
+                const FilterControls(),
+                BlocBuilder<SealsBloc, SealsState>(builder: (context, state) {
+                  final sealsBloc = BlocProvider.of<SealsBloc>(context);
+                  sealsBloc.add(SealsRequest());
+                  return SealsList(state.seals);
+                }),
+                Footer()
+              ],
+            ),
           ),
         ),
       ),
