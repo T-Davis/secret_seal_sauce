@@ -38,7 +38,7 @@ class SealProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const Header(),
       body: Column(
         children: [
           Row(

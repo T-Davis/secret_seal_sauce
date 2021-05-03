@@ -27,7 +27,7 @@ class DirectoryPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const CustomAppBar(),
+            const Header(),
             Row(
               children: [
                 Spacer(),

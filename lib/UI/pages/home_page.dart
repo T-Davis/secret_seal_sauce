@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const CustomAppBar(),
+            const Header(),
             Center(
               child: Image.asset(
                 'assets/images/hero_image.png',

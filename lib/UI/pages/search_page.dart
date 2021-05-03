@@ -15,7 +15,7 @@ class SearchPage extends StatelessWidget {
       create: (context) => SealsBloc(),
       child: BlocBuilder<SealsBloc, SealsState>(
         builder: (context, state) => Scaffold(
-          appBar: const CustomAppBar(),
+          appBar: const Header(),
           body: Column(
             children: [
               const FilterControls(),

@@ -9,8 +9,8 @@ import 'package:secret_seal_sauce/extensions/constraints_extensions.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/models/app_page.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar();
+class Header extends StatelessWidget implements PreferredSizeWidget {
+  const Header();
 
   @override
   Widget build(BuildContext context) {
