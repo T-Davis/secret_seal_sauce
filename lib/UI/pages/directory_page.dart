@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/components/footer.dart';
 import 'package:secret_seal_sauce/UI/components/header.dart';
+import 'package:secret_seal_sauce/UI/pages/search_page.dart';
+import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
+import 'package:secret_seal_sauce/logic/models/app_page.dart';
 
 const String _longText =
     'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos';
@@ -272,7 +276,10 @@ class SealTag extends StatelessWidget {
             ),
             TextButton(
                 style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                onPressed: () {},
+                onPressed: () {
+                  BlocProvider.of<PagesBloc>(context)
+                      .add(PagesPush(AppPage(SearchPage())));
+                },
                 child: Row(
                   children: [
                     Text(
@@ -317,7 +324,10 @@ class HowToIDSection extends StatelessWidget {
           height: 5,
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              BlocProvider.of<PagesBloc>(context)
+                  .add(PagesPush(AppPage(SearchPage())));
+            },
             child: Text(
               'Learn about the Islands',
               style: TextStyle(color: Colors.blue.shade300),

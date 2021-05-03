@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secret_seal_sauce/UI/constants.dart';
+import 'package:secret_seal_sauce/UI/pages/learn_more_page.dart';
+import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
+import 'package:secret_seal_sauce/logic/models/app_page.dart';
 
 double largeFont = 24;
 
@@ -66,7 +70,10 @@ class LearnHow extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: OutlinedButton(
-                  onPressed: () => {},
+                  onPressed: () {
+                    BlocProvider.of<PagesBloc>(context)
+                        .add(PagesPush(AppPage(LearnMorePage())));
+                  },
                   child: Text('Protecting Seals'),
                   style: OutlinedButton.styleFrom(
                       primary: Colors.white,
