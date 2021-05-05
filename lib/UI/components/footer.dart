@@ -53,7 +53,7 @@ class LearnHow extends StatelessWidget {
     return Row(
       children: [
         Spacer(),
-        Flexible(
+        Expanded(
           flex: 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -67,21 +67,20 @@ class LearnHow extends StatelessWidget {
                 style:
                     TextStyle(fontStyle: FontStyle.italic, fontSize: largeFont),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 40),
-                child: OutlinedButton(
-                  onPressed: () {
-                    BlocProvider.of<PagesBloc>(context)
-                        .add(PagesPush(AppPage(LearnMorePage())));
-                  },
-                  child: Text('Protecting Seals'),
-                  style: OutlinedButton.styleFrom(
-                      primary: Colors.white,
-                      minimumSize: Size(170, 32),
-                      backgroundColor: kLightBlue,
-                      alignment: Alignment.center),
-                ),
+              SizedBox(height: 20),
+              OutlinedButton(
+                onPressed: () {
+                  BlocProvider.of<PagesBloc>(context)
+                      .add(PagesPush(AppPage(LearnMorePage())));
+                },
+                child: Text('Protecting Seals'),
+                style: OutlinedButton.styleFrom(
+                    primary: Colors.white,
+                    minimumSize: Size(170, 32),
+                    backgroundColor: kLightBlue,
+                    alignment: Alignment.center),
               ),
+              SizedBox(height: 40)
             ],
           ),
         ),
@@ -173,6 +172,7 @@ class LinksAndSignUpDesktop extends StatelessWidget {
                   height: 50,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FooterSiteMap(),
@@ -309,7 +309,7 @@ class FooterSignUpDesktop extends StatelessWidget {
             SizedBox(
               width: 24,
             ),
-            Container(
+            SizedBox(
               width: 200,
               child: Text(
                 'Sign up for updates from the Marine Mammal Center',
@@ -371,7 +371,6 @@ class FooterSignUpMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -426,7 +425,7 @@ class FooterSignUpMobile extends StatelessWidget {
         SizedBox(
           height: 25,
         ),
-        Container(
+        SizedBox(
           width: 200,
           child: Text(
             'Sign up for updates from the Marine Mammal Center',
@@ -551,7 +550,7 @@ class Attribution extends StatelessWidget {
               SizedBox(
                 width: 20,
               ),
-              Expanded(
+              Flexible(
                 child: Text(
                   attributionText,
                   style: TextStyle(
