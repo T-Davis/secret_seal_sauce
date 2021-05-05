@@ -544,8 +544,8 @@ class Attribution extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/place_holder.png',
+              SvgPicture.asset(
+                'assets/images/footer_seal.svg',
                 height: 70,
               ),
               SizedBox(
