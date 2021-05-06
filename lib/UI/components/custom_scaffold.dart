@@ -19,7 +19,20 @@ class CustomScaffold extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const Header(),
-              content,
+              Row(
+                children: [
+                  Spacer(),
+                  Flexible(
+                      flex: 10,
+                      child: Center(
+                        child: Container(
+                          constraints: BoxConstraints(maxWidth: 1000),
+                          child: content,
+                        ),
+                      )),
+                  Spacer()
+                ],
+              ),
               Footer(),
             ],
           ),
