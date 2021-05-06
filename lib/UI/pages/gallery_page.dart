@@ -1,34 +1,39 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:secret_seal_sauce/UI/components/header.dart';
+import 'package:secret_seal_sauce/UI/components/custom_scaffold.dart';
 import 'package:secret_seal_sauce/UI/pages/seal_profile_page.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/bloc/seals_bloc.dart';
 import 'package:secret_seal_sauce/logic/models/app_page.dart';
 import 'package:secret_seal_sauce/logic/models/seal.dart';
 
-class SearchPage extends StatelessWidget {
+class GalleryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SealsBloc(),
       child: BlocBuilder<SealsBloc, SealsState>(
-        builder: (context, state) => Scaffold(
-          appBar: const CustomAppBar(),
-          body: Column(
-            children: [
-              const FilterControls(),
-              BlocBuilder<SealsBloc, SealsState>(builder: (context, state) {
-                final sealsBloc = BlocProvider.of<SealsBloc>(context);
-                sealsBloc.add(SealsRequest());
-                return SealsList(state.seals);
-              }),
-            ],
-          ),
+        builder: (context, state) => CustomScaffold(
+          GalleryPageContent(),
         ),
       ),
     );
+  }
+}
+
+class GalleryPageContent extends StatelessWidget {
+  const GalleryPageContent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SealsBloc, SealsState>(builder: (context, state) {
+      final sealsBloc = BlocProvider.of<SealsBloc>(context);
+      sealsBloc.add(SealsRequest());
+      return SealsList(state.seals);
+    });
   }
 }
 
@@ -53,28 +58,6 @@ class SealsList extends StatelessWidget {
       children: List.generate(
         localSeals.length,
         (index) => GridViewTile(localSeals[index]),
-      ),
-    );
-  }
-}
-
-class FilterControls extends StatelessWidget {
-  const FilterControls({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      color: Colors.amber,
-      child: Row(
-        children: const [
-          SizedBox(width: 50),
-          Text('thing'),
-          SizedBox(width: 50),
-          Text('thing2')
-        ],
       ),
     );
   }

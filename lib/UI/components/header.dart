@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:secret_seal_sauce/UI/components/custom_width.dart';
 import 'package:secret_seal_sauce/UI/pages/about_page.dart';
 import 'package:secret_seal_sauce/UI/pages/directory_page.dart';
 import 'package:secret_seal_sauce/UI/pages/home_page.dart';
@@ -9,8 +10,8 @@ import 'package:secret_seal_sauce/extensions/constraints_extensions.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/models/app_page.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar();
+class Header extends StatelessWidget implements PreferredSizeWidget {
+  const Header();
 
   @override
   Widget build(BuildContext context) {
@@ -20,37 +21,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           SizedBox(height: 5),
           SizedBox(
             height: 60,
-            child: Row(
-              children: [
-                Spacer(),
-                Flexible(
-                  flex: 8,
-                  child: Row(
-                    children: [
-                      LogoNavWidget(),
-                      SizedBox(width: 20),
-                      if (constraints.indicateLargeScreen) NavRailButtons(),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            if (constraints.indicateLargeScreen)
-                              FindASealButton(),
-                            SizedBox(width: 20),
-                            ReportASightingWidget(),
-                            if (constraints.indicateSmallScreen)
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.menu),
-                              )
-                          ],
-                        ),
-                      ),
-                    ],
+            child: CustomWidth(
+              Row(
+                children: [
+                  LogoNavWidget(),
+                  SizedBox(width: 20),
+                  if (constraints.indicateLargeScreen) NavRailButtons(),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        if (constraints.indicateLargeScreen) FindASealButton(),
+                        SizedBox(width: 20),
+                        ReportASightingWidget(),
+                        if (constraints.indicateSmallScreen)
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.menu),
+                          )
+                      ],
+                    ),
                   ),
-                ),
-                Spacer(),
-              ],
+                ],
+              ),
             ),
           ),
           Divider(color: Colors.blue),
