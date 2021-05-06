@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secret_seal_sauce/UI/components/custom_width.dart';
 
 import '../constants.dart';
 import 'footer.dart';
@@ -19,20 +20,7 @@ class CustomScaffold extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const Header(),
-              Row(
-                children: [
-                  Spacer(),
-                  Flexible(
-                      flex: 10,
-                      child: Center(
-                        child: Container(
-                          constraints: BoxConstraints(maxWidth: 1000),
-                          child: content,
-                        ),
-                      )),
-                  Spacer()
-                ],
-              ),
+              CustomWidth(content),
               Footer(),
             ],
           ),
