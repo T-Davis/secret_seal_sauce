@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:secret_seal_sauce/UI/components/custom_link.dart';
 import 'package:secret_seal_sauce/UI/components/custom_scaffold.dart';
-import 'package:secret_seal_sauce/UI/pages/gallery_page.dart';
+import 'package:secret_seal_sauce/UI/pages/bleach_numbers_page.dart';
+import 'package:secret_seal_sauce/UI/pages/islands_page.dart';
+import 'package:secret_seal_sauce/UI/pages/natural_bleaching_page.dart';
+import 'package:secret_seal_sauce/UI/pages/scarring_page.dart';
+import 'package:secret_seal_sauce/UI/pages/tags_page.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/models/app_page.dart';
 
@@ -96,26 +101,31 @@ class DirectoryPageContent extends StatelessWidget {
             leftPosition: 46,
             topPosition: 48,
             tag: 'Natural Bleach',
+            route: NatualBleachingPage(),
           ),
           SealTag(
             leftPosition: 50,
             topPosition: 250,
             tag: 'Scars',
+            route: ScarringPage(),
           ),
           SealTag(
             leftPosition: 304,
             topPosition: 0,
             tag: 'By Island',
+            route: IslandsPage(),
           ),
           SealTag(
             leftPosition: 544,
             topPosition: 80,
             tag: 'Bleach Number',
+            route: BleachNumbersPage(),
           ),
           SealTag(
             leftPosition: 580,
             topPosition: 254,
             tag: 'Tag Number',
+            route: TagsPage(),
           ),
           GestureDetector(
             onTapUp: (TapUpDetails details) => print(details.localPosition),
@@ -157,14 +167,20 @@ class DirectoryPageContent extends StatelessWidget {
                   HowToIDSection(
                     title: 'Island',
                     text: '             $_shortText',
+                    linkText: 'Learn about the Islands',
+                    route: IslandsPage(),
                   ),
                   HowToIDSection(
                     title: 'Tags',
                     text: '          $_shortText',
+                    linkText: 'Learn about Tagging',
+                    route: TagsPage(),
                   ),
                   HowToIDSection(
                     title: 'Natual Bleach Marks',
                     text: '                                      $_shortText',
+                    linkText: 'Learn about Natural Bleach',
+                    route: NatualBleachingPage(),
                   ),
                 ],
               ),
@@ -179,10 +195,14 @@ class DirectoryPageContent extends StatelessWidget {
                   HowToIDSection(
                     title: 'Scars',
                     text: '            $_shortText',
+                    linkText: 'Learn about Scarring',
+                    route: ScarringPage(),
                   ),
                   HowToIDSection(
                     title: 'Bleach Number',
                     text: '                             $_shortText',
+                    linkText: 'Learn about Bleach Numbers',
+                    route: BleachNumbersPage(),
                   ),
                 ],
               ),
@@ -242,12 +262,14 @@ class SealTag extends StatelessWidget {
   final double leftPosition;
   final double topPosition;
   final String tag;
+  final Widget route;
 
   const SealTag(
       {Key? key,
       required this.leftPosition,
       required this.topPosition,
-      required this.tag})
+      required this.tag,
+      required this.route})
       : super(key: key);
 
   @override
@@ -266,7 +288,7 @@ class SealTag extends StatelessWidget {
                 style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
                 onPressed: () {
                   BlocProvider.of<PagesBloc>(context)
-                      .add(PagesPush(AppPage(GalleryPage())));
+                      .add(PagesPush(AppPage(route)));
                 },
                 child: Row(
                   children: [
@@ -290,8 +312,15 @@ class SealTag extends StatelessWidget {
 class HowToIDSection extends StatelessWidget {
   final String title;
   final String text;
+  final String linkText;
+  final Widget route;
 
-  const HowToIDSection({Key? key, required this.title, required this.text})
+  const HowToIDSection(
+      {Key? key,
+      required this.title,
+      required this.text,
+      required this.linkText,
+      required this.route})
       : super(key: key);
 
   @override
@@ -311,15 +340,7 @@ class HowToIDSection extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        TextButton(
-            onPressed: () {
-              BlocProvider.of<PagesBloc>(context)
-                  .add(PagesPush(AppPage(GalleryPage())));
-            },
-            child: Text(
-              'Learn about the Islands',
-              style: TextStyle(color: Colors.blue.shade300),
-            )),
+        CustomLink(text: linkText, route: route),
         SizedBox(
           height: 20,
         )
