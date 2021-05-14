@@ -1,8 +1,7 @@
 [
     {
         "origin": [
-            "http://localhost:5000",
-            "https://web.app"
+            "*"
         ],
         "method": [
             "GET"
