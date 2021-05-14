@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/components/custom_width.dart';
 import 'package:secret_seal_sauce/UI/pages/about_page.dart';
-import 'package:secret_seal_sauce/UI/pages/directory_page.dart';
+import 'package:secret_seal_sauce/UI/pages/directory_page/directory_page.dart';
 import 'package:secret_seal_sauce/UI/pages/home_page.dart';
 import 'package:secret_seal_sauce/UI/pages/learn_more_page.dart';
 import 'package:secret_seal_sauce/UI/pages/ocean_activities_page.dart';

@@ -3,24 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secret_seal_sauce/UI/components/custom_link.dart';
 import 'package:secret_seal_sauce/UI/components/custom_scaffold.dart';
 import 'package:secret_seal_sauce/UI/pages/bleach_numbers_page.dart';
+import 'package:secret_seal_sauce/UI/pages/directory_page/directory_page_copy.dart';
 import 'package:secret_seal_sauce/UI/pages/islands_page.dart';
 import 'package:secret_seal_sauce/UI/pages/natural_bleaching_page.dart';
 import 'package:secret_seal_sauce/UI/pages/scarring_page.dart';
 import 'package:secret_seal_sauce/UI/pages/tags_page.dart';
 import 'package:secret_seal_sauce/logic/bloc/pages_bloc.dart';
 import 'package:secret_seal_sauce/logic/models/app_page.dart';
-
-const String _longText =
-    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos';
-const String _shortText =
-    'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos';
-
-const String _multiLineText = '''
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-''';
 
 class DirectoryPage extends StatelessWidget {
   const DirectoryPage();
@@ -46,7 +35,7 @@ class DirectoryPageContent extends StatelessWidget {
           height: 50,
         ),
         Text(
-          _longText,
+          areYouExcited,
           style: TextStyle(fontSize: 19, fontWeight: FontWeight.w300),
         ),
         SizedBox(
@@ -153,7 +142,7 @@ class DirectoryPageContent extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Text(_longText),
+        Text(howToID),
         SizedBox(
           height: 20,
         ),
@@ -166,19 +155,20 @@ class DirectoryPageContent extends StatelessWidget {
                 children: [
                   HowToIDSection(
                     title: 'Island',
-                    text: '             $_shortText',
+                    text: '             $island',
                     linkText: 'Learn about the Islands',
                     route: IslandsPage(),
                   ),
                   HowToIDSection(
                     title: 'Tags',
-                    text: '          $_shortText',
+                    text: '          $tags',
                     linkText: 'Learn about Tagging',
                     route: TagsPage(),
                   ),
                   HowToIDSection(
                     title: 'Natual Bleach Marks',
-                    text: '                                      $_shortText',
+                    text:
+                        '                                      $naturalBleach',
                     linkText: 'Learn about Natural Bleach',
                     route: NatualBleachingPage(),
                   ),
@@ -194,13 +184,13 @@ class DirectoryPageContent extends StatelessWidget {
                 children: [
                   HowToIDSection(
                     title: 'Scars',
-                    text: '            $_shortText',
+                    text: '            $scars',
                     linkText: 'Learn about Scarring',
                     route: ScarringPage(),
                   ),
                   HowToIDSection(
                     title: 'Bleach Number',
-                    text: '                             $_shortText',
+                    text: '                             $bleachNumber',
                     linkText: 'Learn about Bleach Numbers',
                     route: BleachNumbersPage(),
                   ),
@@ -222,33 +212,33 @@ class DirectoryPageContent extends StatelessWidget {
             )),
         SizedBox(height: 16),
         Text(
-          '$_shortText $_shortText',
+          theHawaiianMonk,
           style: TextStyle(fontSize: 17),
         ),
         SizedBox(
           height: 16,
         ),
-        Text(_longText),
-        SizedBox(
-          height: 12,
-        ),
-        Row(children: [
-          SizedBox(
-            width: 30,
-          ),
-          Text(_multiLineText),
-        ]),
-        Text(_shortText),
-        SizedBox(
-          height: 12,
-        ),
-        Row(children: [
-          SizedBox(
-            width: 30,
-          ),
-          Text('$_multiLineText$_multiLineText'),
-        ]),
-        Text(_shortText),
+        Text(withOnlyAbout),
+        // SizedBox(
+        //   height: 12,
+        // ),
+        // Row(children: [
+        //   SizedBox(
+        //     width: 30,
+        //   ),
+        //   Text(_multiLineText),
+        // ]),
+        // Text(_shortText),
+        // SizedBox(
+        //   height: 12,
+        // ),
+        // Row(children: [
+        //   SizedBox(
+        //     width: 30,
+        //   ),
+        //   Text('$_multiLineText$_multiLineText'),
+        // ]),
+        // Text(_shortText),
         SizedBox(
           height: 60,
         ),
