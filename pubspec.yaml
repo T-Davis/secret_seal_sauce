@@ -9,15 +9,15 @@ environment:
   sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
-  cloud_firestore: 
-  equatable: 
-  # firebase_analytics: not ready for NNBD
-  firebase_core: 
-  firebase_storage: 
+  cloud_firestore:
+  equatable:
+  firebase_analytics:
+  firebase_core:
+  firebase_storage:
   flutter:
     sdk: flutter
   flutter_bloc: 
-  flutter_svg: ^0.21.0-nullsafety.0
+  flutter_svg:
   
 
 dev_dependencies:
