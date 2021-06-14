@@ -126,7 +126,7 @@ class InPartnershipWith extends StatelessWidget {
                       ),
                     ),
                     SvgPicture.asset(
-                      'assets/images/NOAA_logo.svg',
+                      'assets/images/noaa_logo.svg',
                       height: 100,
                       semanticsLabel: 'NOAA Logo',
                     ),
@@ -137,7 +137,7 @@ class InPartnershipWith extends StatelessWidget {
                   width: 50,
                 ),
                 SvgPicture.asset(
-                  'assets/images/TMMC_logo.svg',
+                  'assets/images/tmmc_logo.svg',
                   height: 70,
                   color: Colors.white,
                   semanticsLabel: 'TMMC Logo',
@@ -458,7 +458,7 @@ class FooterSocialMedia extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SvgPicture.asset(
-              'assets/images/Facebook_logo.svg',
+              'assets/images/facebook_logo.svg',
               height: 22,
               semanticsLabel: 'Facebook Logo',
               color: Colors.white,
@@ -467,7 +467,7 @@ class FooterSocialMedia extends StatelessWidget {
               width: 15,
             ),
             SvgPicture.asset(
-              'assets/images/Instagram_logo.svg',
+              'assets/images/instagram_logo.svg',
               height: 22,
               semanticsLabel: 'Instagram Logo',
               color: Colors.white,
