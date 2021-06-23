@@ -467,7 +467,7 @@ class FooterSocialMedia extends StatelessWidget {
               width: 15,
             ),
             SvgPicture.asset(
-              'assets/images/instagram_logo.svg',
+              'assets/images/facebook_logo.svg',
               height: 22,
               semanticsLabel: 'Instagram Logo',
               color: Colors.white,
@@ -528,8 +528,8 @@ class Attribution extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-            'assets/images/footer_seal.svg',
+          Image.asset(
+            'assets/images/seal.png',
             height: 70,
           ),
           SizedBox(

@@ -37,7 +37,7 @@ class SealProfilePageContent extends StatelessWidget {
                 children: [
                   FutureBuilder(
                       future: FirebaseStorage.instance
-                          .ref(seal.photoURL)
+                          .ref(seal.photos.first.photoPath800x800)
                           .getDownloadURL(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
@@ -121,7 +121,7 @@ class SealProfilePageContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           tagText('Age'),
-                          contentText(seal.age.toString()),
+                          contentText(seal.birthYear.toString()),
                         ],
                       ),
                       Spacer(),
@@ -138,7 +138,7 @@ class SealProfilePageContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           tagText('Sex'),
-                          contentText(seal.sex),
+                          contentText(seal.sex.toString()),
                         ],
                       ),
                       Spacer(),
@@ -146,7 +146,7 @@ class SealProfilePageContent extends StatelessWidget {
                   ),
                   verticalBox(),
                   tagText('Birthplace'),
-                  contentText(seal.birthplace),
+                  contentText(seal.birthIsland),
                   divider(),
                   tagText('Story'),
                   contentText(

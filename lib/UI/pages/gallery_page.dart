@@ -81,7 +81,7 @@ class GridViewTile extends StatelessWidget {
           children: [
             FutureBuilder(
                 future: FirebaseStorage.instance
-                    .ref(seal.photoURL)
+                    .ref(seal.photos.first.photoPath200x200)
                     .getDownloadURL(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
