@@ -8,33 +8,42 @@ extension SealDocs on List<QueryDocumentSnapshot> {
         if (snapshot.exists) {}
         final data = snapshot.data()! as Map<String, dynamic>;
 
+        final scars = <String>[];
+        if (data['dorsalScar'] != null) scars.add('Dorsal');
+        if (data['ventralScar'] != null) scars.add('Ventral');
+        if (data['rightLateralScar'] != null) scars.add('Right Lateral');
+        if (data['leftLateralScar'] != null) scars.add('Left Lateral');
+        if (data['foreflippersScar'] != null) scars.add('Foreflippers');
+        if (data['hindflippersScar'] != null) scars.add('Hindflippers');
+
+        final bleaching = <String>[];
+        if (data['dorsalBleach'] != null) bleaching.add('Dorsal');
+        if (data['ventralBleach'] != null) bleaching.add('Ventral');
+        if (data['rightLateralBleach'] != null) bleaching.add('Right Lateral');
+        if (data['leftLateralBleach'] != null) bleaching.add('Left Lateral');
+        if (data['foreflippersBleach'] != null) bleaching.add('Foreflippers');
+        if (data['hindflippersBleach'] != null) bleaching.add('Hindflippers');
+
+        final sightings = <String>[];
+        if (data['hawaiiSighting'] != null) sightings.add('Hawaii');
+        if (data['kauaiSighting'] != null) sightings.add('Mauai');
+        if (data['molokaiSighting'] != null) sightings.add('Molokai');
+        if (data['mauiSighting'] != null) sightings.add('Maui');
+        if (data['lanaiSighting'] != null) sightings.add('Lanai');
+
         return Seal(
-            snapshot.id,
-            (data['name'] ??= 'unknown') as String,
+            data['ID'] as String,
+            (data['name'] ??= 'none') as String,
             (data['size'] ??= 'unknown') as String,
             (data['sex'] ??= 'unknown') as String,
             (data['birthYear'] != null)
                 ? data['birthYear'].toString()
                 : 'unknown',
             (data['birthIsland'] ??= 'unknown') as String,
-            (data['dorsalScar'] ??= false) as bool,
-            (data['ventralScar'] ??= false) as bool,
-            (data['rightLateralScar'] ??= false) as bool,
-            (data['leftLateralScar'] ??= false) as bool,
-            (data['foreflippersScar'] ??= false) as bool,
-            (data['hindflippersScar'] ??= false) as bool,
-            (data['dorsalBleach'] ??= false) as bool,
-            (data['ventralBleach'] ??= false) as bool,
-            (data['rightLateralBleach'] ??= false) as bool,
-            (data['leftLateralBleach'] ??= false) as bool,
-            (data['foreflippersBleach'] ??= false) as bool,
-            (data['hindflippersBleach'] ??= false) as bool,
-            (data['hawaiiSighting'] ??= false) as bool,
-            (data['kauaiSighting'] ??= false) as bool,
-            (data['molokaiSighting'] ??= false) as bool,
-            (data['mauiSighting'] ??= false) as bool,
-            (data['lanaiSighting'] ??= false) as bool,
-            photoMapper(data['photos']));
+            photoMapper(data['photos']),
+            scars,
+            bleaching,
+            sightings);
       }).toList();
 }
 

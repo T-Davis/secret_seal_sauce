@@ -8,23 +8,9 @@ class Seal extends Equatable {
   final String sex;
   final String birthYear;
   final String birthIsland;
-  final bool dorsalScar;
-  final bool ventralScar;
-  final bool rightLateralScar;
-  final bool leftLateralScar;
-  final bool foreflippersScar;
-  final bool hindflippersScar;
-  final bool dorsalBleach;
-  final bool ventralBleach;
-  final bool rightLateralBleach;
-  final bool leftLateralBleach;
-  final bool foreflippersBleach;
-  final bool hindflippersBleach;
-  final bool hawaiiSighting;
-  final bool kauaiSighting;
-  final bool molokaiSighting;
-  final bool mauiSighting;
-  final bool lanaiSighting;
+  final List<String> scars;
+  final List<String> bleaching;
+  final List<String> sightings;
   final List<Photo> photos;
 
   const Seal(
@@ -34,24 +20,10 @@ class Seal extends Equatable {
       this.sex,
       this.birthYear,
       this.birthIsland,
-      this.dorsalScar,
-      this.ventralScar,
-      this.rightLateralScar,
-      this.leftLateralScar,
-      this.foreflippersScar,
-      this.hindflippersScar,
-      this.dorsalBleach,
-      this.ventralBleach,
-      this.rightLateralBleach,
-      this.leftLateralBleach,
-      this.foreflippersBleach,
-      this.hindflippersBleach,
-      this.hawaiiSighting,
-      this.kauaiSighting,
-      this.molokaiSighting,
-      this.mauiSighting,
-      this.lanaiSighting,
-      this.photos);
+      this.photos,
+      this.scars,
+      this.bleaching,
+      this.sightings);
 
   @override
   List<Object> get props => [
@@ -61,23 +33,9 @@ class Seal extends Equatable {
         sex,
         birthYear,
         birthIsland,
-        dorsalScar,
-        ventralScar,
-        rightLateralScar,
-        leftLateralScar,
-        foreflippersScar,
-        hindflippersScar,
-        dorsalBleach,
-        ventralBleach,
-        rightLateralBleach,
-        leftLateralBleach,
-        foreflippersBleach,
-        hindflippersBleach,
-        hawaiiSighting,
-        kauaiSighting,
-        molokaiSighting,
-        mauiSighting,
-        lanaiSighting,
-        photos
+        photos,
+        scars,
+        bleaching,
+        sightings
       ];
 }
