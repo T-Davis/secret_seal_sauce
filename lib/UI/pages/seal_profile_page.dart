@@ -71,7 +71,7 @@ class SealProfilePageContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           tagText('ID'),
-                          nameAndIDText('RO40'),
+                          nameAndIDText(seal.id),
                         ],
                       ),
                       Spacer(),
@@ -79,11 +79,16 @@ class SealProfilePageContent extends StatelessWidget {
                   ),
                   divider(),
                   tagText('Scarring'),
-                  contentText('1. Dorsal: Cookie cutter bite'),
-                  contentText('2. Ventral, Mid-body: Probable large shark'),
+                  if (seal.scars.isEmpty) contentText('none'),
+                  for (final scar in seal.scars) contentText(scar),
                   verticalBox(),
                   tagText('Bleach Marks'),
-                  contentText('Right-lateral, Head/neck'),
+                  if (seal.bleaching.isEmpty) contentText('none'),
+                  for (final bleach in seal.bleaching) contentText(bleach),
+                  verticalBox(),
+                  tagText('Sighting Locations'),
+                  if (seal.sightings.isEmpty) contentText('unknown'),
+                  for (final sighting in seal.sightings) contentText(sighting),
                   verticalBox(),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +126,11 @@ class SealProfilePageContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           tagText('Age'),
-                          contentText(seal.birthYear.toString()),
+                          contentText(seal.birthYear == 'unknown'
+                              ? seal.birthYear
+                              : (DateTime.now().year -
+                                      int.parse(seal.birthYear))
+                                  .toString()),
                         ],
                       ),
                       Spacer(),
@@ -130,7 +139,7 @@ class SealProfilePageContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           tagText('Size'),
-                          contentText('Large'),
+                          contentText(seal.size),
                         ],
                       ),
                       Spacer(),
@@ -138,7 +147,7 @@ class SealProfilePageContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           tagText('Sex'),
-                          contentText(seal.sex.toString()),
+                          contentText(seal.sex),
                         ],
                       ),
                       Spacer(),
