@@ -8,29 +8,6 @@ extension SealDocs on List<QueryDocumentSnapshot> {
         if (snapshot.exists) {}
         final data = snapshot.data()! as Map<String, dynamic>;
 
-        final scars = <String>[];
-        if (data['dorsalScar'] != null) scars.add('Dorsal');
-        if (data['ventralScar'] != null) scars.add('Ventral');
-        if (data['rightLateralScar'] != null) scars.add('Right Lateral');
-        if (data['leftLateralScar'] != null) scars.add('Left Lateral');
-        if (data['foreflippersScar'] != null) scars.add('Foreflippers');
-        if (data['hindflippersScar'] != null) scars.add('Hindflippers');
-
-        final bleaching = <String>[];
-        if (data['dorsalBleach'] != null) bleaching.add('Dorsal');
-        if (data['ventralBleach'] != null) bleaching.add('Ventral');
-        if (data['rightLateralBleach'] != null) bleaching.add('Right Lateral');
-        if (data['leftLateralBleach'] != null) bleaching.add('Left Lateral');
-        if (data['foreflippersBleach'] != null) bleaching.add('Foreflippers');
-        if (data['hindflippersBleach'] != null) bleaching.add('Hindflippers');
-
-        final sightings = <String>[];
-        if (data['hawaiiSighting'] != null) sightings.add('Hawaii');
-        if (data['kauaiSighting'] != null) sightings.add('Mauai');
-        if (data['molokaiSighting'] != null) sightings.add('Molokai');
-        if (data['mauiSighting'] != null) sightings.add('Maui');
-        if (data['lanaiSighting'] != null) sightings.add('Lanai');
-
         return Seal(
             data['ID'] as String,
             (data['name'] ??= 'none') as String,
@@ -40,16 +17,15 @@ extension SealDocs on List<QueryDocumentSnapshot> {
                 ? data['birthYear'].toString()
                 : 'unknown',
             (data['birthIsland'] ??= 'unknown') as String,
-            photoMapper(data['photos']),
-            scars,
-            bleaching,
-            sightings);
+            photosMapper(data['photos']),
+            scarsMapper(data),
+            bleachesMapper(data),
+            sightingsMapper(data));
       }).toList();
 }
 
-const stockPhotoPath = 'seals/stock_monk_seal_200x200.webp';
-
-List<Photo> photoMapper(dynamic photos) {
+List<Photo> photosMapper(dynamic photos) {
+  final stockPhotoPath = 'seals/stock_monk_seal_200x200.webp';
   if (photos == null) {
     return [Photo('', '', stockPhotoPath, stockPhotoPath, stockPhotoPath)];
   }
@@ -65,4 +41,39 @@ List<Photo> photoMapper(dynamic photos) {
   }
 
   return sealPhotos;
+}
+
+List<String> scarsMapper(Map<String, dynamic> data) {
+  final scars = <String>[];
+  if (data['dorsalScar'] != null) scars.add('Dorsal');
+  if (data['ventralScar'] != null) scars.add('Ventral');
+  if (data['rightLateralScar'] != null) scars.add('Right Lateral');
+  if (data['leftLateralScar'] != null) scars.add('Left Lateral');
+  if (data['foreflippersScar'] != null) scars.add('Foreflippers');
+  if (data['hindflippersScar'] != null) scars.add('Hindflippers');
+
+  return scars;
+}
+
+List<String> bleachesMapper(Map<String, dynamic> data) {
+  final bleaches = <String>[];
+  if (data['dorsalBleach'] != null) bleaches.add('Dorsal');
+  if (data['ventralBleach'] != null) bleaches.add('Ventral');
+  if (data['rightLateralBleach'] != null) bleaches.add('Right Lateral');
+  if (data['leftLateralBleach'] != null) bleaches.add('Left Lateral');
+  if (data['foreflippersBleach'] != null) bleaches.add('Foreflippers');
+  if (data['hindflippersBleach'] != null) bleaches.add('Hindflippers');
+
+  return bleaches;
+}
+
+List<String> sightingsMapper(Map<String, dynamic> data) {
+  final sightings = <String>[];
+  if (data['hawaiiSighting'] != null) sightings.add('Hawaii');
+  if (data['kauaiSighting'] != null) sightings.add('Mauai');
+  if (data['molokaiSighting'] != null) sightings.add('Molokai');
+  if (data['mauiSighting'] != null) sightings.add('Maui');
+  if (data['lanaiSighting'] != null) sightings.add('Lanai');
+
+  return sightings;
 }
