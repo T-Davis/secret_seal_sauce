@@ -17,14 +17,14 @@ extension SealDocs on List<QueryDocumentSnapshot> {
                 ? data['birthYear'].toString()
                 : 'unknown',
             (data['birthIsland'] ??= 'unknown') as String,
-            photosMapper(data['photos']),
-            scarsMapper(data),
-            bleachesMapper(data),
-            sightingsMapper(data));
+            _photosMapper(data['photos']),
+            _scarsMapper(data),
+            _bleachesMapper(data),
+            _sightingsMapper(data));
       }).toList();
 }
 
-List<Photo> photosMapper(dynamic photos) {
+List<Photo> _photosMapper(dynamic photos) {
   final stockPhotoPath = 'seals/stock_monk_seal_200x200.webp';
   if (photos == null) {
     return [Photo('', '', stockPhotoPath, stockPhotoPath, stockPhotoPath)];
@@ -43,7 +43,7 @@ List<Photo> photosMapper(dynamic photos) {
   return sealPhotos;
 }
 
-List<String> scarsMapper(Map<String, dynamic> data) {
+List<String> _scarsMapper(Map<String, dynamic> data) {
   final scars = <String>[];
   if (data['dorsalScar'] != null) scars.add('Dorsal');
   if (data['ventralScar'] != null) scars.add('Ventral');
@@ -55,7 +55,7 @@ List<String> scarsMapper(Map<String, dynamic> data) {
   return scars;
 }
 
-List<String> bleachesMapper(Map<String, dynamic> data) {
+List<String> _bleachesMapper(Map<String, dynamic> data) {
   final bleaches = <String>[];
   if (data['dorsalBleach'] != null) bleaches.add('Dorsal');
   if (data['ventralBleach'] != null) bleaches.add('Ventral');
@@ -67,7 +67,7 @@ List<String> bleachesMapper(Map<String, dynamic> data) {
   return bleaches;
 }
 
-List<String> sightingsMapper(Map<String, dynamic> data) {
+List<String> _sightingsMapper(Map<String, dynamic> data) {
   final sightings = <String>[];
   if (data['hawaiiSighting'] != null) sightings.add('Hawaii');
   if (data['kauaiSighting'] != null) sightings.add('Mauai');
