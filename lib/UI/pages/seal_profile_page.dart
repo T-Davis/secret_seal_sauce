@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:secret_seal_sauce/UI/components/custom_scaffold.dart';
+import 'package:secret_seal_sauce/logic/models/photo.dart';
 import 'package:secret_seal_sauce/logic/models/seal.dart';
 
 class SealProfilePage extends StatelessWidget {
@@ -17,12 +19,25 @@ class SealProfilePage extends StatelessWidget {
 }
 
 class SealProfilePageContent extends StatelessWidget {
-  const SealProfilePageContent({
+  SealProfilePageContent({
     Key? key,
     required this.seal,
-  }) : super(key: key);
+  })  : carouselController = CarouselController(),
+        super(key: key);
 
   final Seal seal;
+  final CarouselController carouselController;
+
+  Future<List<Widget>> _photoMapper() async {
+    final widgets = <Widget>[];
+    await Future.forEach(
+        seal.photos,
+        (photo) async => widgets.add(Image.network(await FirebaseStorage
+            .instance
+            .ref((photo! as Photo).photoPath1600x1600)
+            .getDownloadURL())));
+    return widgets;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,17 +50,46 @@ class SealProfilePageContent extends StatelessWidget {
               flex: 5,
               child: Column(
                 children: [
-                  FutureBuilder(
-                      future: FirebaseStorage.instance
-                          .ref(seal.photos.first.photoPath800x800)
-                          .getDownloadURL(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Image.network(snapshot.data! as String);
-                        } else {
-                          return const CircularProgressIndicator();
-                        }
-                      }),
+                  SizedBox(
+                    height: 400,
+                    child: FutureBuilder(
+                        future: _photoMapper(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return CarouselSlider(
+                              carouselController: carouselController,
+                              options: CarouselOptions(
+                                enlargeCenterPage: true,
+                              ),
+                              items: snapshot.data! as List<Widget>,
+                            );
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        }),
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  SizedBox(
+                    width: 200,
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => carouselController.previousPage(
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.linear),
+                          child: const Icon(Icons.arrow_left),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => carouselController.nextPage(
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.linear),
+                          child: const Icon(Icons.arrow_right),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
