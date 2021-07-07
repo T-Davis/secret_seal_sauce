@@ -1,26 +1,10 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:secret_seal_sauce/data/seals/firebase_seal_repository.dart';
 import 'package:secret_seal_sauce/logic/models/seal.dart';
 import 'package:secret_seal_sauce/logic/repository/seal_repository.dart';
 
-part 'seals_event.dart';
-part 'seals_state.dart';
+class SealService implements SealRepository {
+  final SealRepository _sealRepository;
 
-class SealsBloc extends Bloc<SealsEvent, SealsState> implements SealRepository {
-  final SealRepository _sealRepository = FirebaseSealRepository();
-
-  SealsBloc() : super(const SealsInitial());
-
-  @override
-  Stream<SealsState> mapEventToState(SealsEvent event) async* {
-    if (event is SealsRequest) {
-      final seals = await getAllSeals();
-      yield SealsReceived(seals);
-    }
-  }
+  SealService(this._sealRepository);
 
   @override
   Future<List<Seal>> getAllSeals() {
