@@ -27,9 +27,11 @@ class IslandsPageContent extends StatelessWidget {
             'Islands',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          CustomLink(text: 'Oahu', route: GalleryPage()),
-          CustomLink(text: 'Big Island', route: GalleryPage()),
+          CustomLink(text: 'Hawaii', route: GalleryPage()),
           CustomLink(text: 'Kauai', route: GalleryPage()),
+          CustomLink(text: 'Molokai', route: GalleryPage()),
+          CustomLink(text: 'Maui', route: GalleryPage()),
+          CustomLink(text: 'Lanai', route: GalleryPage()),
         ]),
       ),
     );
